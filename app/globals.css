@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-bau-canvas text-bau-ink antialiased;
+  }
+
+  /* Thai has no uppercase, so `uppercase` alone cannot carry the constructivist
+     voice here. Weight and tracking do that work instead — which is why every
+     heading below leans on font-black rather than text-transform. */
+  h1,
+  h2,
+  h3 {
+    @apply font-black tracking-tight;
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------------
+     BUTTONS — a Bauhaus button is a physical object. It has thickness (the
+     border), it casts a hard shadow, and when you press it, it moves into
+     the page and the shadow vanishes. Nothing fades.
+     --------------------------------------------------------------------- */
+  .btn {
+    @apply inline-flex min-h-[3.5rem] items-center justify-center gap-2
+           border-2 border-bau-ink px-6 text-base font-bold tracking-wide
+           shadow-hard transition-all duration-200 ease-out
+           active:translate-x-[3px] active:translate-y-[3px] active:shadow-none
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bau-ink focus-visible:ring-offset-2
+           disabled:pointer-events-none disabled:opacity-40
+           sm:border-4 sm:shadow-hard-md;
+  }
+
+  .btn-primary {
+    @apply btn rounded-none bg-bau-green text-white hover:bg-bau-green-dark;
+  }
+
+  .btn-blue {
+    @apply btn rounded-none bg-bau-blue text-white hover:bg-bau-blue/90;
+  }
+
+  .btn-yellow {
+    @apply btn rounded-none bg-bau-yellow text-bau-ink hover:bg-bau-yellow/90;
+  }
+
+  .btn-outline {
+    @apply btn rounded-none bg-white text-bau-ink hover:bg-bau-muted;
+  }
+
+  .btn-danger {
+    @apply btn rounded-none bg-bau-red text-white hover:bg-bau-red/90;
+  }
+
+  /* The one soft shape allowed: a pill, used only when an action is meant to
+     read as a stamp rather than a block. */
+  .btn-pill {
+    @apply rounded-full;
+  }
+
+  /* ---------------------------------------------------------------------
+     CARDS — white plane, thick outline, hard shadow. Depth by stacking.
+     --------------------------------------------------------------------- */
+  .card {
+    @apply relative rounded-none border-2 border-bau-ink bg-white p-5
+           shadow-hard-md sm:border-4 sm:shadow-hard-lg;
+  }
+
+  /* Corner marker: the small geometric punctuation that tells you this is a
+     composition and not a div. Colour is set per-instance. */
+  .card-mark {
+    @apply absolute right-3 top-3 h-4 w-4;
+  }
+
+  /* ---------------------------------------------------------------------
+     FORM FIELDS — an input is a slot cut into the page, not a soft pillow.
+     --------------------------------------------------------------------- */
+  .input {
+    @apply w-full rounded-none border-2 border-bau-ink bg-white px-4 py-4
+           text-base font-medium text-bau-ink
+           placeholder:font-normal placeholder:text-bau-ink/35
+           focus:outline-none focus:ring-4 focus:ring-bau-yellow;
+  }
+
+  .field-label {
+    @apply mb-2 block text-xs font-bold uppercase tracking-widest text-bau-ink/70;
+  }
+
+  /* ---------------------------------------------------------------------
+     BADGES — solid colour block, black outline, no rounding.
+     --------------------------------------------------------------------- */
+  .badge {
+    @apply inline-flex items-center rounded-none border-2 border-bau-ink px-2.5 py-0.5
+           text-xs font-bold uppercase tracking-wider;
+  }
+
+  /* Section rhythm: every major band is separated by a hard rule, the way a
+     poster is divided into registers. */
+  .rule {
+    @apply border-b-4 border-bau-ink;
+  }
+}
